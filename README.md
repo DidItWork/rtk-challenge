@@ -11,6 +11,7 @@ source install/setup.bash
 
 ## Part A
 
+Run the lane detection node which gets the ZED camera feed, performs lane detection, then implements a PID control loop to correct the vehicle's trajectory (Note that lane detection was disabled in the code for this part). 
 ```
 ros2 run rtk_challenge lane_detection
 ```
@@ -19,12 +20,12 @@ The code for the `lane_detection` node in part A could be found in `rtk_challeng
 
 ## Part B
 
-In one terminal, run
+In one terminal, run the following for object detection
 ```
 ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zed2
 ```
 
-In a separate terminal, run
+In a separate terminal, run the following which collects the coordinates of the objects detected and map them to the odom/map frames. 
 ```
 ros2 run rtk_challenge object_mapping
 ```
@@ -52,5 +53,3 @@ initial_pose:="0 0 0 0 0 0"
 ```
 
 Object coordinates and labels for part B will be saved as `object_mapping.csv` in the directory where the node is ran.
-
-Code for part B can be found in `rtk_challenge/object_mapping.py`
